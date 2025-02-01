@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,12 +37,12 @@ export default function Header() {
 
           {/* Auth Buttons - Desktop */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-700 hover:text-indigo-600 font-medium transition-colors">
+            <Link to='/login' className="text-gray-700 hover:text-indigo-600 font-medium transition-colors">
               Login
-            </button>
-            <button className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">
+            </Link>
+            <Link to='/signup' className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">
               Sign Up
-            </button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -85,14 +86,14 @@ export default function Header() {
             </div>
             <div className="pt-4 pb-3 border-t border-gray-200">
               <div className="flex items-center px-2 space-x-4">
-                <button className="block w-full text-left px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-colors">
+                <Link to='/login' className="block w-full text-left px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-colors">
                   Login
-                </button>
+                </Link>
               </div>
               <div className="mt-3 px-4">
-                <button className="block w-full px-3 py-2 rounded-md text-center font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors">
+                <Link to='/signup' className="block w-full px-3 py-2 rounded-md text-center font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors">
                   Sign Up
-                </button>
+                </Link>
               </div>
             </div>
           </div>
