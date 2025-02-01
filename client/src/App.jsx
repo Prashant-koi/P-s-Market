@@ -9,6 +9,7 @@ import Snp from './components/Snp'
 import FrontPage from './components/frontpage'
 import LoginPage from './components/Login'
 import SignUp from './components/Signup'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
   
@@ -17,12 +18,19 @@ function App() {
     <UserContextProvider>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        {/* Public routes  */}
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path="/" element={
+
+          <ProtectedRoute>
+          <Layout />
+          </ProtectedRoute>
+          
+          }>
         <Route index element={<FrontPage />} />
         <Route path='/nasdaq' element={<Nasdaq />} />
         <Route path='/snp' element={<Snp />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/signup' element={<SignUp />} />
 
         </Route>
       </Routes>

@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGOSTRING)
   .catch(err => console.error('MongoDB connection error:', err))
 
 
-  
+
 
 const verifyToken = (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
@@ -63,7 +63,6 @@ app.post("/login", async (req, res) => {
             });
         }
 
-        
         const isPasswordValid = await bcrypt.compare(password, user.password);
         
         if (!isPasswordValid) {
@@ -73,13 +72,19 @@ app.post("/login", async (req, res) => {
             });
         }
 
+        // Create and sign JWT
+        const token = jwt.sign(
+            { id: user._id, username: user.username },
+            process.env.JWT_SECRET,
+            { expiresIn: '24h' }
+        );
+
         res.status(200).json({
             success: true,
-            message: "Login successful",
+            token,
             user: {
                 id: user._id,
                 username: user.username
-                
             }
         });
 
@@ -139,6 +144,17 @@ app.post("/register", async (req, res) => {
         });
     }
 });
+
+
+app.get("/protected", verifyToken, (req, res) => {
+    res.json({
+        success: true,
+        message: "This is a protected route",
+        user: req.user
+    });
+});
+
+
 
 app.listen(3001, () => {
     console.log("Server running on port 3001")
