@@ -32,23 +32,18 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 max-w-7xl">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <span className="font-bold text-xl text-indigo-600">P's Market</span>
+            <Link to='/' className="font-bold text-xl text-indigo-600">P's Market</Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a 
-              href="#" 
+            <Link 
+              to='/yourstocks'
               className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md font-medium transition-colors"
             >
               Your Stocks
-            </a>
-            <a 
-              href="#" 
-              className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md font-medium transition-colors"
-            >
-              Market
-            </a>
+            </Link>
+            
           </div>
 
           {/* Desktop Buttons */}
@@ -91,18 +86,13 @@ export default function Header() {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a
-                href="#"
+              <Link
+                to='/yourstocks'
                 className="block px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-colors"
               >
                 Your Stocks
-              </a>
-              <a
-                href="#"
-                className="block px-3 py-2 rounded-md text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-colors"
-              >
-                Market
-              </a>
+              </Link>
+
             </div>
             <div className="pt-4 pb-3 border-t border-gray-200">
               {isLoggedIn ? (

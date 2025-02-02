@@ -10,6 +10,7 @@ import FrontPage from './components/frontpage'
 import LoginPage from './components/Login'
 import SignUp from './components/Signup'
 import { ProtectedRoute } from './components/ProtectedRoute'
+import YourStocks from './components/YourStock'
 
 function App() {
   
@@ -31,6 +32,7 @@ function App() {
         <Route index element={<FrontPage />} />
         <Route path='/nasdaq' element={<Nasdaq />} />
         <Route path='/snp' element={<Snp />} />
+        <Route path='/yourstocks' element={<YourStocks />} />
 
         </Route>
       </Routes>
