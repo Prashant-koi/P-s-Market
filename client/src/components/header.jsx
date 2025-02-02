@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import profileImage from '/account_logo.png'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,10 @@ export default function Header() {
     const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
   }, []);
+  
+  const userData = JSON.parse(localStorage.user)
+  console.log(userData.username)
+
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -49,12 +54,25 @@ export default function Header() {
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             {isLoggedIn ? (
+              <div className='flex'>
+                <img
+                  src={profileImage}
+                  alt="Profile"
+                  className="w-8 h-8 mt-1 rounded-full"
+                />
+              
+              <span className='text-gray-700 px-3 py-2 rounded-md font-medium transition-colors'>
+                {userData?.username}
+              </span>
+
+
               <button
                 onClick={handleLogout}
                 className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors"
               >
                 Logout
               </button>
+              </div>
             ) : (
               <>
                 <Link to='/login' className="text-gray-700 hover:text-indigo-600 font-medium transition-colors">
@@ -97,6 +115,7 @@ export default function Header() {
             <div className="pt-4 pb-3 border-t border-gray-200">
               {isLoggedIn ? (
                 <div className="px-4">
+                  <span>okay</span>
                   <button
                     onClick={handleLogout}
                     className="block w-full px-3 py-2 rounded-md text-center font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
