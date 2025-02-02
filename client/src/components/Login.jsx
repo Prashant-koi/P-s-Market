@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+import SignUp from './Signup';
 
 export default function LoginPage() {  // Changed name to Login
     const [username, setUsername] = useState('');
@@ -78,6 +79,9 @@ export default function LoginPage() {  // Changed name to Login
                     >
                         {loading ? 'Logging in...' : 'Login'}
                     </button>
+                    
+                    <h5 className='text-gray-500'>Don't have an account?</h5>
+                    <Link to='/signup' className='text-gray-700'><h5>Register Account</h5></Link>
                 </form>
             </div>
         </div>

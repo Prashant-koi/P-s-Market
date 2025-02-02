@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function SignUp() {
     const [username, setUsername] = useState('');
@@ -47,6 +47,8 @@ export default function SignUp() {
                     >
                         Sign Up
                     </button>
+                    <h5 className='text-gray-500'>Already have an account?</h5>
+                    <Link to='/login' className='text-gray-700'><h5>Login</h5></Link>
                 </form>
             </div>
         </div>
