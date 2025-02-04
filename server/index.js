@@ -10,6 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+STOCKAPI = process.env.ALPHA_API
 //We aew doing some error handeling here
 mongoose.connect(process.env.MONGOSTRING)
   .then(() => console.log('Connected to MongoDB'))
@@ -154,6 +155,25 @@ app.get("/protected", verifyToken, (req, res) => {
     });
 });
 
+app.post("/nasdaq",(req,res)=>{
+    var url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${STOCKAPI}`;
+
+    request.get({
+        url: url,
+        json: true,
+        headers: {'User-Agent': 'request'}
+    }, (err, res, data) => {
+        if (err) {
+        console.log('Error:', err);
+        } else if (res.statusCode !== 200) {
+        console.log('Status:', res.statusCode);
+        } else {
+        // data is successfully parsed as a JSON object:
+        // console.log(data);
+        return res.json({sucess:true, data:data})
+        }
+    });
+})
 
 
 app.listen(3001, () => {
