@@ -23,7 +23,7 @@ export default function Nasdaq(){
 
             fetchData()
         },[])
-
+        
 
     return(
         <div>Stocks of NASDAQ here!</div>
