@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
+import { SERVER_URL } from "../env";
+
 export default function Nasdaq(){
     const [stockData, setStockData] = useState(null)
 
@@ -8,7 +10,7 @@ export default function Nasdaq(){
         
         const fetchData = async() => {
             try{
-                const response = axios.post("http://localhost:3001/nasdaq")
+                const response = axios.post(SERVER_URL)
                     
                 if (response.data.sucess){
                     console.log(response.data)
