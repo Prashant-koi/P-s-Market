@@ -1,4 +1,3 @@
-
 import {Route, Routes, BrowserRouter} from 'react-router-dom'
 // import Header from './components/header'
 import {UserContextProvider} from'./UserContext'
@@ -11,6 +10,7 @@ import LoginPage from './components/Login'
 import SignUp from './components/Signup'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import YourStocks from './components/YourStock'
+import StockView from './components/StockView'
 
 function App() {
   
@@ -33,6 +33,7 @@ function App() {
         <Route path='/nasdaq' element={<Nasdaq />} />
         <Route path='/snp' element={<Snp />} />
         <Route path='/yourstocks' element={<YourStocks />} />
+        <Route path='/stock/:symbol' element={<StockView />} />
 
         </Route>
       </Routes>

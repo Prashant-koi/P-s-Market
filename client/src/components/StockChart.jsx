@@ -13,7 +13,7 @@ const StockChart = ({ symbol, title }) => {
         console.log('Starting fetch for:', symbol);
         const result = await apifetch(symbol);
         console.log('Got data:', result);
-        // Reverse the data array so latest dates are on the right
+       //data is currently in opposite to the direction we see in so I am reversing it
         setStockData([...result.data].reverse());
       } catch (error) {
         console.error('Error fetching data:', error);
