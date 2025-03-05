@@ -7,3 +7,5 @@ P's Market has a protected login feature made possible by using JWT. We are usin
 
 # Challenges Faced
 The biggest challenge I have faced while building this website is capital, which is lacking. I need to make a lot of API calls to get the real-time stock data, which is hard to get through any free resource available. 
+# Future Plan
+Expanding the database with more APIs
